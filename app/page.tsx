@@ -144,8 +144,10 @@ export default function Home() {
     });
     const tempTasks = await tasksResponse.json();
 
+    console.log(tempTasks);
     setTasks(tempTasks);
     groupTasks(tempTasks);
+
     setIsFetching(false);
   };
 
