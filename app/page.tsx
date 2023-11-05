@@ -10,6 +10,7 @@ import s from './page.module.scss'
 
 export default function Home() {
   const [isAddingTask, setIsAddingTask] = useState<boolean>(false);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
 
   const [tasks, setTasks] = useState<TaskI[]>([
     {
@@ -119,20 +120,33 @@ export default function Home() {
   };
 
   const sendTasks = async () => {
+    if (isFetching) {
+      return;
+    }
+    setIsFetching(true);
+
     const tasksResponse = await fetch('/api/tasks', {
       method: 'POST',
       body: JSON.stringify(tasks),
     });
 
-    console.log(tasksResponse);
+    setIsFetching(false);
   }
 
   const getTasks = async () => {
+    if (isFetching) {
+      return;
+    }
+    setIsFetching(true);
+
     const tasksResponse = await fetch('/api/tasks', {
       method: 'GET',
     });
+    const tempTasks = await tasksResponse.json();
 
-    console.log(tasksResponse);
+    setTasks(tempTasks);
+    groupTasks(tempTasks);
+    setIsFetching(false);
   };
 
   useEffect(() => {
