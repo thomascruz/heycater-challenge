@@ -11,3 +11,9 @@ export async function POST(request: Request) {
   await kv.hset('tasks', body );
   return NextResponse.json({ body });
 }
+
+export async function DELETE(request: Request) {
+  const body = await request.json();
+  await kv.del('tasks', body.id );
+  return NextResponse.json({ body });
+}

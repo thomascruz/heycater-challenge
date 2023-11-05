@@ -77,8 +77,13 @@ export default function Home() {
     sendTasks();
   };
 
-  const deleteTask = (task: TaskI) => {
+  const deleteTask = async (task: TaskI) => {
     const updatedTasks = tasks.filter((t) => t.id !== task.id);
+
+    const taskDeleteResponse = await fetch('/api/tasks', {
+      method: 'DELETE',
+      body: JSON.stringify(tasks),
+    });
 
     setTasks(updatedTasks);
     groupTasks(updatedTasks);
@@ -114,7 +119,7 @@ export default function Home() {
     for (const key in tasksObjectResponse) {
       const element: any = tasksObjectResponse[key];
       const task: TaskI = {
-        id: element.id,
+        id: parseInt(key, 10),
         createdAt: new Date(element.createdAt),
         updatedAt: new Date(element.updatedAt),
         status: element.status,
