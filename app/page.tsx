@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import Button from './components/button';
 import TaskEdit from './components/taskEdit';
-import TasksList from './components/tasksList';
+import TasksList from './components/taskslist';
 import { TaskStatus, TaskColor, TasksGroup } from './components/task/constants';
 
 import s from './page.module.scss'
