@@ -1,13 +1,20 @@
 export enum TaskStatus {
   OPEN = 'OPEN',
-  IN_PROGRESS = 'IN_PROGRESS',
   DONE = 'DONE'
 }
 
 export enum TaskColor {
-  PINK = 'PINK',
+  BEIGE = 'BEIGE',
   YELLOW = 'YELLOW',
   BLUE = 'BLUE',
-  ORANGE = 'ORANGE',
-  PURPLE = 'PURPLE',
+  GREEN = 'GREEN',
+  RED = 'RED',
+}
+
+export enum TasksGroup {
+  TODAY = 'TODAY',
+  YESTERDAY = 'YESTERDAY',
+  TOMORROW = 'TOMORROW',
+  LATER = 'LATER',
+  DONE = 'DONE',
 }

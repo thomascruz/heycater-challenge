@@ -1,30 +1,38 @@
 import classNames from 'classnames';
 import { TaskStatus, TaskColor } from './constants';
 
-import s from './style.module.scss'
+import s from './style.module.scss';
 
 export default function Task({
   task,
-  variant
+  variant,
+  onCheck,
 }: {
   task: TaskI
-  variant?: 'default' | 'outlined'
+  variant?: 'default' | 'outlined',
+  onCheck?: (task: TaskI) => void,
 }) {
 
   const formatTaskDate = (date: Date) => {
-    return date.toLocaleDateString('en-US');
+    const now = new Date();
+
+    if (date.getDate() === now.getDate() && date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear()) {
+      return `${date.getUTCHours()}:${date.getUTCMinutes() < 10 ? `0${date.getUTCMinutes()}` : date.getUTCMinutes()}`;
+    }
+
+    return `${date.getDate()}/${date.getUTCMonth() + 1}${date.getFullYear() !== now.getFullYear() ? `/${date.getFullYear()}` : ''}`;
   }
 
   const getTaskColorClassName = (color: TaskColor | undefined) => {
     switch (color) {
+      case TaskColor.BEIGE:
+        return s.beige;
       case TaskColor.YELLOW:
-        return s.yellow;
-      case TaskColor.PINK:
-          return s.pink;
-      case TaskColor.ORANGE:
+          return s.yellow;
+      case TaskColor.RED:
         return s.red;
-      case TaskColor.PURPLE:
-        return s.purple;
+      case TaskColor.GREEN:
+        return s.green;
       case TaskColor.BLUE:
         return s.blue;
       default:
@@ -41,6 +49,8 @@ export default function Task({
       <div className={s.taskBody}>
         {task.description && (<p className={s.taskDescription}>{task.description}</p>)}
       </div>
+
+      <div onClick={(evt) => onCheck && onCheck(task)} className={classNames(s.taskCheck, task.status === TaskStatus.DONE && s.checked)}/>
     </div>
   )
 }

@@ -1,0 +1,19 @@
+.tasksList {
+  color: var(--font-color-white);
+
+  .tasksListHeader {
+    margin-bottom: var(--spacing-default);
+
+    font-weight: 600;
+    font-size: var(--font-size-extra-large);
+  }
+
+  .tasksListBody {
+    padding-left: var(--spacing-extra-large);
+  }
+  
+  .taskWrapper {
+    margin-bottom: var(--spacing-default);
+  }
+
+}

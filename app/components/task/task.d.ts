@@ -1,15 +1,14 @@
 declare enum TaskStatus {
   OPEN = 'OPEN',
-  IN_PROGRESS = 'IN_PROGRESS',
   DONE = 'DONE'
 }
 
 declare enum TaskColor {
-  PINK = 'PINK',
+  BEIGE = 'BEIGE',
   YELLOW = 'YELLOW',
   BLUE = 'BLUE',
-  ORANGE = 'ORANGE',
-  PURPLE = 'PURPLE',
+  GREEN = 'GREEN',
+  RED = 'RED',
 }
 
 declare interface TaskI {

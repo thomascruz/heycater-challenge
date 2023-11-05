@@ -1,21 +1,14 @@
-.tasksList {
-  
-  .taskWrapper {
-    margin-bottom: var(--spacing-default);
+.main {
+  padding: var(--spacing-extra-large) var(--spacing-large);
+}
+
+.tasksListWrapper {
+  margin-bottom: var(--spacing-extra-large);
+}
+
+@media (min-width: 701px) {
+  .main {
+    max-width: var(--page-width);
+    margin: auto;
   }
-
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-
-}
-
-@media (prefers-color-scheme: dark) {
-
 }

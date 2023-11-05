@@ -1,29 +1,61 @@
 .task {
-  padding: var(--spacing-large) var(--spacing-extra-large);
-
-  .taskHeader {
-    display: flex;
-    justify-content: space-between;
-  }
+  position: relative;
+  padding: var(--spacing-large) var(--spacing-extra-large) var(--spacing-medium);
 
   .taskTitle {
     font-size: var(--font-size-large);
   }
 
   .taskDescription {
-    margin-top: var(--spacing-default);
+    margin-top: var(--spacing-small);
   }
 
   .taskDate {
-    display: none;
+    opacity: .5;
   }
 
-  &:hover {
+  .taskCheck {
+    position: absolute;
+    top: var(--spacing-default);
+    right: var(--spacing-large);
 
-    .taskDate {
-      display: block;
+    width: 40px;
+    height: 40px;
+
+    border-radius: 100px;
+    background-color: var(--font-color-black);
+    cursor: pointer;
+
+    &.checked {
+      background-color: var(--font-color-white);
+
+      &:after {
+        opacity: 1;
+      }
     }
 
+    &:after {
+      opacity: 0;
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 21%;
+
+      width: 17px;
+      height: 7px;
+      border-bottom: solid 4px var(--font-color-black);
+      border-left: solid 4px var(--font-color-black);
+
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+
+      &:after {
+        opacity: .5;
+        border-color: var(--font-color-white);
+      }
+    }
   }
 }
 
@@ -33,9 +65,26 @@
   border-style: solid !important;
   border-color: transparent;
 
+  transition: box-shadow 0.1s ease-in-out;
+
+  .taskCheck {
+    transition: box-shadow 0.1s ease-in-out;
+  }
+
   &.outlined {
     background-color: transparent !important;
-    color: var(--font-color-black) !important;
+    color: var(--font-color-white) !important;
+
+    .taskCheck {
+      border-width: 3px;
+      border-style: solid;
+      background-color: transparent !important;
+      
+      &:after {
+        border-color: var(--font-color-white) !important;
+      }
+
+    }
   }
 
   &.yellow {
@@ -44,33 +93,49 @@
 
     &.outlined {
       border-color: var(--color-yellow);
+
+      .taskCheck {
+        border-color: var(--color-yellow);
+      }
     }
   }
 
-  &.orange {
-    background-color: var(--color-orange);
+  &.beige {
+    background-color: var(--color-beige);
     color: var(--font-color-black);
 
     &.outlined {
-      border-color: var(--color-orange);
+      border-color: var(--color-beige);
+
+      .taskCheck {
+        border-color: var(--color-beige);
+      }
     }
   }
 
-  &.pink {
-    background-color: var(--color-pink);
-    color: var(--font-color-white);
+  &.red {
+    background-color: var(--color-red);
+    color: var(--font-color-black);
 
     &.outlined {
-      border-color: var(--color-pink);
+      border-color: var(--color-red);
+
+      .taskCheck {
+        border-color: var(--color-red);
+      }
     }
   }
 
-  &.purple {
-    background-color: var(--color-purple);
-    color: var(--font-color-white);
+  &.green {
+    background-color: var(--color-green);
+    color: var(--font-color-black);
 
     &.outlined {
-      border-color: var(--color-purple);
+      border-color: var(--color-green);
+
+      .taskCheck {
+        border-color: var(--color-green);
+      }
     }
   }
 
@@ -80,7 +145,19 @@
 
     &.outlined {
       border-color: var(--color-blue);
+
+      .taskCheck {
+        border-color: var(--color-blue);
+      }
     }
   }
+
+  // &:hover {
+  //   box-shadow: 2px 5px 0 #000;
+
+  //   .taskCheck {
+  //     box-shadow: inset 2px 5px 0 #000;
+  //   }
+  // }
 
 }
