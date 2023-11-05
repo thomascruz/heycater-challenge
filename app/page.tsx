@@ -84,7 +84,7 @@ export default function Home() {
 
     const taskDeleteResponse = await fetch('/api/tasks', {
       method: 'DELETE',
-      body: JSON.stringify(tasks),
+      body: JSON.stringify(task),
     });
 
     setTasks(updatedTasks);
