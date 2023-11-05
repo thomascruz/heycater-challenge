@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react';
 
 import Button from './components/button';
 import TasksList from './components/tasksList';
+import TaskEdit from './components/taskEdit';
 import { TaskStatus, TaskColor, TasksGroup } from './components/task/constants';
 
 import s from './page.module.scss'
-import TaskEdit from './components/taskEdit';
-import Task from './components/task';
 
 export default function Home() {
   const [isAddingTask, setIsAddingTask] = useState<boolean>(false);
