@@ -1,4 +1,4 @@
-import Task from '../../components/task';
+import Task from '../task';
 
 import s from './style.module.scss';
 
@@ -6,10 +6,12 @@ export default function TasksList({
   title,
   tasks,
   variant,
+  onCheck,
 }: {
   title?: string
   tasks: TaskI[]
   variant?: 'default' | 'outlined'
+  onCheck?: (task: TaskI) => void,
 }) {
   return (
     <div className={s.tasksList}>
@@ -19,7 +21,7 @@ export default function TasksList({
       <div className={s.tasksListBody}>
         {tasks.map((task, index) => (
           <div key={index} className={s.taskWrapper}>
-            <Task task={task} variant={variant}/>
+            <Task task={task} variant={variant} onCheck={(task) => onCheck && onCheck(task)}/>
           </div>
         ))}
       </div>

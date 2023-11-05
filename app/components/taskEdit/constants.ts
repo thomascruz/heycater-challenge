@@ -14,7 +14,6 @@ export enum TaskColor {
 export enum TasksGroup {
   TODAY = 'TODAY',
   YESTERDAY = 'YESTERDAY',
-  OLDER = 'OLDER',
   TOMORROW = 'TOMORROW',
   LATER = 'LATER',
   DONE = 'DONE',

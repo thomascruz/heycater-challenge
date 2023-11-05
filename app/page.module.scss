@@ -2,8 +2,38 @@
   padding: var(--spacing-extra-large) var(--spacing-large);
 }
 
+.pageActions {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  padding: var(--spacing-default) var(--spacing-large);
+}
+
 .tasksListWrapper {
   margin-bottom: var(--spacing-extra-large);
+}
+
+.addTaskOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.5) 80%);
+
+  .addTaskWrapper {
+    position: absolute;
+    bottom: var(--spacing-large);
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: var(--page-width);
+  }
 }
 
 @media (min-width: 701px) {

@@ -50,7 +50,11 @@ export default function Task({
         {task.description && (<p className={s.taskDescription}>{task.description}</p>)}
       </div>
 
-      <div onClick={(evt) => onCheck && onCheck(task)} className={classNames(s.taskCheck, task.status === TaskStatus.DONE && s.checked)}/>
+      <div 
+        onClick={(evt) => onCheck && onCheck(task)} 
+        className={classNames(s.taskCheck, task.status === TaskStatus.DONE && s.checked)}
+        title={task.status === TaskStatus.DONE ? 'Mark as undone' : 'Mark as done'}
+      />
     </div>
   )
 }

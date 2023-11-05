@@ -1,0 +1,30 @@
+.button {
+  padding: var(--spacing-small) var(--spacing-default);
+
+  font-weight: 600;
+  font-size: var(--font-size-default);
+  color: var(--font-color-white);
+
+  border-radius: 30px;
+  border: none;
+
+  background-color: transparent;
+  border: 3px solid;
+  border-color: var(--color-beige);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-beige);
+    color: var(--font-color-black);
+
+    &.black {
+      background-color: var(--font-color-black);
+      color: var(--font-color-white);
+    }
+  }
+
+  &.black {
+    border-color: var(--font-color-black);
+    color: var(--font-color-black);
+  }
+}

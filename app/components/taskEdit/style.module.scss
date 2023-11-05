@@ -1,0 +1,130 @@
+.task {
+  position: relative;
+  padding: var(--spacing-large) var(--spacing-extra-large) var(--spacing-medium);
+
+  .message {
+    font-weight: bold;
+  }
+
+  .taskTitle {
+    font-size: var(--font-size-large);
+    font-weight: bolder;
+  }
+  
+  .taskTitle,
+  .taskDescription {
+    width: 100%;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px #00000050;
+    color: inherit;
+  
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .taskDescription {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 150px;
+    max-height: 200px;
+    margin-top: var(--spacing-default);
+
+    font-size: var(--font-size-default);
+  }
+
+  .taskFooter {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: var(--spacing-default);
+  }
+
+  .taskActions {
+    display: flex;
+
+    .taskAction {
+      margin-left: var(--spacing-extra-small);
+    }
+  }
+
+  .colorOptions {
+    display: flex;
+
+    .colorOption {
+      width: 35px;
+      height: 35px;
+
+      border-radius: 35px;
+      border: solid 3px transparent;
+      cursor: pointer;
+
+      margin-right: var(--spacing-extra-small);
+
+      &.selected {
+        border-color: var(--font-color-black);
+      }
+
+      &.yellow {
+        background-color: var(--color-yellow);
+      }
+
+      &.beige {
+        background-color: var(--color-beige);
+      }
+
+      &.red {
+        background-color: var(--color-red);
+      }
+
+      &.green {
+        background-color: var(--color-green);
+      }
+
+      &.blue {
+        background-color: var(--color-blue);
+
+        &.selected {
+          border-color: var(--font-color-white);
+        }
+      }
+      
+    }
+
+  }
+}
+
+.task {
+  border-radius: var(--border-radius-default);
+  border-width: 3px;
+  border-style: solid !important;
+  border-color: transparent;
+
+  &.yellow {
+    background-color: var(--color-yellow);
+    color: var(--font-color-black);
+  }
+
+  &.beige {
+    background-color: var(--color-beige);
+    color: var(--font-color-black);
+  }
+
+  &.red {
+    background-color: var(--color-red);
+    color: var(--font-color-black);
+  }
+
+  &.green {
+    background-color: var(--color-green);
+    color: var(--font-color-black);
+  }
+
+  &.blue {
+    background-color: var(--color-blue);
+    color: var(--font-color-white);
+  }
+
+}
