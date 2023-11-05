@@ -2,15 +2,18 @@ import classNames from 'classnames';
 import { TaskStatus, TaskColor } from './constants';
 
 import s from './style.module.scss';
+import Button from '../button';
 
 export default function Task({
   task,
   variant,
   onCheck,
+  onDelete,
 }: {
   task: TaskI
   variant?: 'default' | 'outlined',
   onCheck?: (task: TaskI) => void,
+  onDelete?: (task: TaskI) => void,
 }) {
 
   const formatTaskDate = (date: Date) => {
@@ -55,6 +58,14 @@ export default function Task({
         className={classNames(s.taskCheck, task.status === TaskStatus.DONE && s.checked)}
         title={task.status === TaskStatus.DONE ? 'Mark as undone' : 'Mark as done'}
       />
+
+      <div className={s.deleteButtonWrapper}>
+        <Button
+          text='Delete'
+          title='Delete'
+          onClick={() => onDelete && onDelete(task)}
+        />
+      </div>
     </div>
   )
 }

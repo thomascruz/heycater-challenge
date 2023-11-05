@@ -8,7 +8,6 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  console.log(request, await body);
   await kv.hset('tasks', body );
   return NextResponse.json({ body });
 }

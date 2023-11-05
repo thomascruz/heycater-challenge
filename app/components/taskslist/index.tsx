@@ -7,11 +7,13 @@ export default function TasksList({
   tasks,
   variant,
   onCheck,
+  onDelete
 }: {
   title?: string
   tasks: TaskI[]
   variant?: 'default' | 'outlined'
   onCheck?: (task: TaskI) => void,
+  onDelete?: (task: TaskI) => void,
 }) {
   return (
     <div className={s.tasksList}>
@@ -21,7 +23,12 @@ export default function TasksList({
       <div className={s.tasksListBody}>
         {tasks.map((task, index) => (
           <div key={index} className={s.taskWrapper}>
-            <Task task={task} variant={variant} onCheck={(task) => onCheck && onCheck(task)}/>
+            <Task 
+              task={task} 
+              variant={variant} 
+              onCheck={(task) => onCheck && onCheck(task)}
+              onDelete={(task) => onDelete && onDelete(task)}
+            />
           </div>
         ))}
       </div>

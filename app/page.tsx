@@ -12,50 +12,7 @@ export default function Home() {
   const [isAddingTask, setIsAddingTask] = useState<boolean>(false);
   const [isFetching, setIsFetching] = useState<boolean>(false);
 
-  const [tasks, setTasks] = useState<TaskI[]>([
-    {
-      id: 1,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      status: TaskStatus.OPEN,
-      color: TaskColor.GREEN,
-      title: 'Aspernatur mollitia? Assumenda',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut accusantium, suscipit voluptatum quae rem dolore iusto fugiat similique laboriosam nam, exercitationem laborum officia nobis error eaque dolorum, aspernatur mollitia? Assumenda.'
-    },
-    {
-      id: 2,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      status: TaskStatus.DONE,
-      color: TaskColor.BEIGE,
-      title: 'Ut accusantium, suscipit',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut accusantium, suscipit voluptatum quae rem dolore iusto fugiat similique laboriosam nam, exercitationem laborum officia nobis error eaque dolorum, aspernatur mollitia? Assumenda.'
-    },
-    {
-      id: 3,
-      createdAt: new Date('2023-11-04'),
-      updatedAt: new Date(),
-      status: TaskStatus.OPEN,
-      color: TaskColor.YELLOW,
-      title: 'Buy milk',
-    },
-    {
-      id: 4,
-      createdAt: new Date('2022-11-08'),
-      updatedAt: new Date(),
-      status: TaskStatus.DONE,
-      color: TaskColor.BLUE,
-      title: 'Buy milk',
-    },
-    {
-      id: 5,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      status: TaskStatus.OPEN,
-      color: TaskColor.RED,
-      title: 'Buy milk',
-    },
-  ]);
+  const [tasks, setTasks] = useState<TaskI[]>([]);
   const [groupedTasks, setGroupedTasks] = useState<any>({
     TODAY: [],
     YESTERDAY: [],
@@ -98,8 +55,9 @@ export default function Home() {
   };
 
   const addTask = (task: TaskI) => {
+    console.log(tasks);
     setTasks([...tasks, task]);
-    groupTasks(tasks);
+    groupTasks([...tasks, task]);
     setIsAddingTask(false);
     sendTasks();
   };
@@ -113,6 +71,14 @@ export default function Home() {
 
       return t;
     });
+
+    setTasks(updatedTasks);
+    groupTasks(updatedTasks);
+    sendTasks();
+  };
+
+  const deleteTask = (task: TaskI) => {
+    const updatedTasks = tasks.filter((t) => t.id !== task.id);
 
     setTasks(updatedTasks);
     groupTasks(updatedTasks);
@@ -178,17 +144,17 @@ export default function Home() {
       }
 
       <section className={s.openTasksSection}>
-        {groupedTasks.OLDER.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} title='Older' tasks={groupedTasks.OLDER}/></div>}
-        {groupedTasks.YESTERDAY.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} title='Yesterday' tasks={groupedTasks.YESTERDAY}/></div>}
-        {groupedTasks.TODAY.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} title='Today' tasks={groupedTasks.TODAY}/></div>}
-        {groupedTasks.TOMORROW.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} title='Tomorrow' tasks={groupedTasks.TOMORROW}/></div>}
-        {groupedTasks.LATER.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} title='Later' tasks={groupedTasks.LATER}/></div>}
+        {groupedTasks.OLDER.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} onDelete={deleteTask} title='Older' tasks={groupedTasks.OLDER}/></div>}
+        {groupedTasks.YESTERDAY.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} onDelete={deleteTask} title='Yesterday' tasks={groupedTasks.YESTERDAY}/></div>}
+        {groupedTasks.TODAY.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} onDelete={deleteTask} title='Today' tasks={groupedTasks.TODAY}/></div>}
+        {groupedTasks.TOMORROW.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} onDelete={deleteTask} title='Tomorrow' tasks={groupedTasks.TOMORROW}/></div>}
+        {groupedTasks.LATER.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} onDelete={deleteTask} title='Later' tasks={groupedTasks.LATER}/></div>}
       </section>
 
       {
         groupedTasks.DONE.length > 0 && (
           <section className={s.closedTasksSection}>
-            <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} title='Done' tasks={groupedTasks.DONE} variant='outlined'/></div>
+            <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} onDelete={deleteTask} title='Done' tasks={groupedTasks.DONE} variant='outlined'/></div>
           </section>
         )
       }
