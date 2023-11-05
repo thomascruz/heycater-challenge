@@ -1,0 +1,86 @@
+.task {
+  padding: var(--spacing-large) var(--spacing-extra-large);
+
+  .taskHeader {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .taskTitle {
+    font-size: var(--font-size-large);
+  }
+
+  .taskDescription {
+    margin-top: var(--spacing-default);
+  }
+
+  .taskDate {
+    display: none;
+  }
+
+  &:hover {
+
+    .taskDate {
+      display: block;
+    }
+
+  }
+}
+
+.task {
+  border-radius: var(--border-radius-default);
+  border-width: 3px;
+  border-style: solid !important;
+  border-color: transparent;
+
+  &.outlined {
+    background-color: transparent !important;
+    color: var(--font-color-black) !important;
+  }
+
+  &.yellow {
+    background-color: var(--color-yellow);
+    color: var(--font-color-black);
+
+    &.outlined {
+      border-color: var(--color-yellow);
+    }
+  }
+
+  &.orange {
+    background-color: var(--color-orange);
+    color: var(--font-color-black);
+
+    &.outlined {
+      border-color: var(--color-orange);
+    }
+  }
+
+  &.pink {
+    background-color: var(--color-pink);
+    color: var(--font-color-white);
+
+    &.outlined {
+      border-color: var(--color-pink);
+    }
+  }
+
+  &.purple {
+    background-color: var(--color-purple);
+    color: var(--font-color-white);
+
+    &.outlined {
+      border-color: var(--color-purple);
+    }
+  }
+
+  &.blue {
+    background-color: var(--color-blue);
+    color: var(--font-color-white);
+
+    &.outlined {
+      border-color: var(--color-blue);
+    }
+  }
+
+}
