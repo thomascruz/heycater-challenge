@@ -56,10 +56,12 @@ export default function Home() {
 
   const addTask = (task: TaskI) => {
     console.log(tasks);
-    setTasks([...tasks, task]);
-    groupTasks([...tasks, task]);
+    const tempTasks = [...tasks, task];
+
+    setTasks(tempTasks);
+    groupTasks(tempTasks);
     setIsAddingTask(false);
-    sendTasks();
+    sendTasks(tempTasks);
   };
 
   const checkTask = (task: TaskI) => {
@@ -74,7 +76,7 @@ export default function Home() {
 
     setTasks(updatedTasks);
     groupTasks(updatedTasks);
-    sendTasks();
+    sendTasks(updatedTasks);
   };
 
   const deleteTask = async (task: TaskI) => {
@@ -87,10 +89,10 @@ export default function Home() {
 
     setTasks(updatedTasks);
     groupTasks(updatedTasks);
-    sendTasks();
+    sendTasks(updatedTasks);
   };
 
-  const sendTasks = async () => {
+  const sendTasks = async (tasks: TaskI[]) => {
     if (isFetching) {
       return;
     }

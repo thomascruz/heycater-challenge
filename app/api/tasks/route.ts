@@ -14,6 +14,6 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   const body = await request.json();
-  await kv.del('tasks', body.id );
+  await kv.hdel('tasks', body.id );
   return NextResponse.json({ body });
 }
