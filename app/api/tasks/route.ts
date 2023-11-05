@@ -7,7 +7,8 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const { tasks } = await request.json();
-  await kv.hset('tasks', tasks );
-  return NextResponse.json({ tasks });
+  const body = await request.json();
+  console.log(request, await body);
+  await kv.hset('tasks', body );
+  return NextResponse.json({ body });
 }
