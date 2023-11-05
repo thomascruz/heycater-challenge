@@ -146,6 +146,12 @@ export default function Home() {
 
   return (
     <main className={s.main}>
+      {
+        tasks.length === 0 && (
+          <div className={s.emptyList}>No tasks around here...</div>
+        )
+      }
+
       <section className={s.openTasksSection}>
         {groupedTasks.OLDER.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} title='Older' tasks={groupedTasks.OLDER}/></div>}
         {groupedTasks.YESTERDAY.length > 0 && <div className={s.tasksListWrapper}><TasksList onCheck={checkTask} title='Yesterday' tasks={groupedTasks.YESTERDAY}/></div>}

@@ -2,6 +2,26 @@
   padding: var(--spacing-extra-large) var(--spacing-large);
 }
 
+.emptyList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  padding: var(--spacing-large) var(--spacing-extra-large) var(--spacing-medium);
+
+  text-align: center;
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  color: var(--font-color-black);
+
+  opacity: .5;
+
+  background-color: var(--color-yellow);
+  border-radius: 100px;
+}
+
 .pageActions {
   position: fixed;
   bottom: 0;
