@@ -142,9 +142,23 @@ export default function Home() {
     const tasksResponse = await fetch('/api/tasks', {
       method: 'GET',
     });
-    const tempTasks = await tasksResponse.json();
+    const tasksObjectResponse = await tasksResponse.json();
+    const tempTasks: TaskI[] = [];
 
-    console.log(tempTasks);
+    for (const key in tasksObjectResponse) {
+      const element: any = tasksObjectResponse[key];
+      const task: TaskI = {
+        id: element.id,
+        createdAt: new Date(element.createdAt),
+        updatedAt: new Date(element.updatedAt),
+        status: element.status,
+        color: element.color,
+        title: element.title,
+        description: element.description,
+      };
+      tempTasks.push(task);
+    }
+
     setTasks(tempTasks);
     groupTasks(tempTasks);
 
@@ -152,12 +166,8 @@ export default function Home() {
   };
 
   useEffect(() => {
-    groupTasks(tasks);
-  }, [tasks.length]);
-
-  useEffect(() => {
     getTasks();
-  });
+  }, []);
 
   return (
     <main className={s.main}>
