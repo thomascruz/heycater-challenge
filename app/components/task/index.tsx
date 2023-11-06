@@ -63,6 +63,7 @@ export default function Task({
         <Button
           text='Delete'
           title='Delete'
+          variant={task.color !== TaskColor.BLUE ? 'black' : 'white'}
           onClick={() => onDelete && onDelete(task)}
         />
       </div>
